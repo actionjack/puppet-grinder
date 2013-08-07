@@ -35,7 +35,10 @@
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class grinder {
+class grinder (
+  $version = 'present'
+) {
 
+  package { 'grinder': ensure => $version }
 
 }
