@@ -39,6 +39,10 @@ class grinder (
   $version = 'present'
 ) {
 
+  validate_re($version, [ '^present$', '^latest$', '^installed$', '^[0-9\-\.]+$' ])
+
   package { 'grinder': ensure => $version }
+  user { 'grinder': ensure => 'present' }
+  file { '/var/log/grinder': ensure => 'directory', owner => 'grinder', require => User['grinder'] }
 
 }
